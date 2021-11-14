@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button } from '@mui/material';
-
+import { useRoutes } from 'react-router-dom';
 // Point Eel web socket to the instance
 export const eel = window.eel
 eel.set_host( 'ws://localhost:8080' )
@@ -38,6 +38,8 @@ export class App extends Component<{}, {}> {
     path: defPath,
   }
 
+  
+
   public pickFile = () => {
     eel.pick_file(defPath)(( message: string ) => this.setState( { message } ) )
   }
@@ -51,9 +53,8 @@ export class App extends Component<{}, {}> {
           <p>{this.state.message}</p>
           <button className='App-button' onClick={this.pickFile}>Pick Random File From `{this.state.path}`</button>
         </header>
-        <Button variant="text">Text</Button>
+        <Button variant="outlined">Primary</Button>
       </div>
-      
     );
   }
 }
